@@ -1,0 +1,2470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-12 Wed 14:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Intro to Java</title>
+<meta name="author" content="Alex Cingoranelli" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.35;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family:
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+}
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+:root {
+  --bc-tb: #1A2F54;
+  --bc-block: #008ED1;
+  --clr: #333333;
+  --clr-tb-hd: #85CEEB;
+  --clr-code: #85CEEB;
+  --bg: #FFFFFF;
+  --bg-code: #335EA8;
+  --bg-tb-hd: #335EA8;
+  --bg-block: #FFFFE0;
+  --clr-link: #D0372D;
+  --clr-title: #333333;
+  --clr-todo: #008000;
+  --bg-todo: initial;
+  --clr-done: #8D8D84;
+  --bg-done: initial;
+  --ts-clr: #0000FF;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #0000FF;
+  --bg-constant: initial;
+  --clr-constant: #D0372D;
+  --bg-comment: initial;
+  --clr-comment: #8D8D84;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: #8D8D84;
+  --bg-function: initial;
+  --clr-function: #006699;
+  --bg-variable: initial;
+  --clr-variable: #BA36A5;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #808080;
+  --bg-doc: initial;
+  --clr-doc: #036A07;
+  --bg-builtin: initial;
+  --clr-builtin: #006FE0;
+  --bg-string: initial;
+  --clr-string: #008000;
+}
+
+html {
+  font-family: Sans;
+}
+
+body {
+  background: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body[data-theme='light'] {
+  background: var(--bg);
+  color: var(--clr);
+}
+
+body[data-theme='dark'] {
+  background: var(--bg);
+  color: var(--clr);
+  --bc-tb: #eeeeec;
+  --bc-block: initial;
+  --clr: #eeeeec;
+  --clr-code: #2e3436;
+  --clr-tb-hd: #2e3436;
+  --bg: #2e3436;
+  --bg-tb-hd: #d3d7cf;
+  --bg-code: #d3d7cf;
+  --bg-block: initial;
+  --clr-link: #e9b2e3;
+  --clr-title: #eeeeec;
+  --clr-todo: #e9b96e;
+  --bg-todo: initial;
+  --clr-done: #73d216;
+  --bg-done: initial;
+  --ts-clr: #b4fa70;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #b4fa70;
+  --bg-constant: initial;
+  --clr-constant: #e9b2e3;
+  --bg-comment: initial;
+  --clr-comment: #73d216;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #fce94f;
+  --bg-variable: initial;
+  --clr-variable: #fcaf3e;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: initial;
+  --bg-doc: initial;
+  --clr-doc: initial;
+  --bg-builtin: initial;
+  --clr-builtin: #e090d7;
+  --bg-string: initial;
+  --clr-string: #e9b96e;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #content {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #content {
+    width: 768px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    align-items: flex-end;
+  }
+  #content {
+    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
+    margin-right: var(--mg);
+  }
+}
+
+h1 {
+  color: var(--clr-title);
+  text-align: center;
+}
+h2, h3, h4, h5, h6, h7 {
+  font-family: Sans Serif;
+}
+h2 {
+  line-height: 2.5em;
+}
+h2::before {
+  content: "◉ ";
+}
+h3::before {
+  content: "✸ ";
+}
+h4::before {
+  content: "▷ ";
+}
+
+code {
+  color: var(--clr-code);
+  background: var(--bg-code);
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+pre {
+  padding: 20px;
+  border: 1px solid var(--bc-block);
+  background: var(--bg-block);
+  font-size: 0.9rem;
+  overflow-x: scroll;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.todo {
+  color: var(--clr-todo);
+  background: var(--bg-todo);
+}
+
+.done {
+  color: var(--clr-done);
+  background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+  font-size: 0.8rem;
+  color: var(--clr-ts);
+}
+
+table {
+  width: 100%;
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  color: var(--clr-tb-hd);
+  background: var(--bg-tb-hd);
+}
+
+td, th {
+  border: thin solid var(--bc-tb);
+}
+
+li {
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#table-of-contents > h2 {
+  display: none;
+}
+
+#table-of-contents {
+  border: thin solid var(--bc-block);
+  background: var(--bg-block);
+}
+
+#toggle-toc {
+  display: none;
+}
+
+.toc-show {
+  display: block!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2em;
+    line-height: 2em;
+    display: block;
+  }
+  #table-of-contents {
+    background: var(--bg);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+  #table-of-contents a {
+    color: var(--clr);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #table-of-contents {
+    font-size: 0.8rem;
+    position: fixed;
+    left: var(--mg);
+    top: var(--mg);
+    bottom: var(--mg);
+    width: var(--w-toc);
+    overflow-y: scroll;
+  }
+}
+
+#table-of-contents::-webkit-scrollbar {
+  display: none;
+}
+
+#table-of-contents {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.MathJax_Display {
+  font-size: 1.25em;
+}
+
+#toggle-theme {
+  border-width: 0;
+  line-height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background: var(--bg-block);
+  color: var(--clr-code);
+}
+
+#toggle-theme:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-theme {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #toggle-theme {
+    position: absolute;
+    top: var(--mg);
+    right: var(--mg);
+    border-radius: 5px;
+  }
+}
+
+.theme-transition {
+  transition: all 0.5s;
+}
+
+.status {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  ul {
+    padding-left: .5em;
+    margin-left: 0;
+  }
+  li {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+/*]]>*/-->
+</style>
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.35;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family:
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+}
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+:root {
+  --bc-tb: #e7e7e7;
+  --bc-block: #84888b;
+  --clr: #383a42;
+  --clr-tb-hd: #383a42;
+  --clr-code: #383a42;
+  --bg: #fafafa;
+  --bg-code: #e7e7e7;
+  --bg-tb-hd: #e7e7e7;
+  --bg-block: #e7e7e7;
+  --clr-link: #b751b6;
+  --clr-title: #383a42;
+  --clr-todo: #50a14f;
+  --bg-todo: initial;
+  --clr-done: #9ca0a4;
+  --bg-done: initial;
+  --ts-clr: #e45649;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #e45649;
+  --bg-constant: initial;
+  --clr-constant: #b751b6;
+  --bg-comment: initial;
+  --clr-comment: #9ca0a4;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #a626a4;
+  --bg-variable: initial;
+  --clr-variable: #6a1868;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #4078f2;
+  --bg-doc: initial;
+  --clr-doc: #84888b;
+  --bg-builtin: initial;
+  --clr-builtin: #a626a4;
+  --bg-string: initial;
+  --clr-string: #50a14f;
+}
+
+html {
+  font-family: Sans;
+}
+
+body {
+  background: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body[data-theme='light'] {
+  background: var(--bg);
+  color: var(--clr);
+}
+
+body[data-theme='dark'] {
+  background: var(--bg);
+  color: var(--clr);
+  --bc-tb: #1d2026;
+  --bc-block: #83898d;
+  --clr: #bbc2cf;
+  --clr-code: #bbc2cf;
+  --clr-tb-hd: #bbc2cf;
+  --bg: #282c34;
+  --bg-tb-hd: #1d2026;
+  --bg-code: #1d2026;
+  --bg-block: #23272e;
+  --clr-link: #a9a1e1;
+  --clr-title: #bbc2cf;
+  --clr-todo: #98be65;
+  --bg-todo: initial;
+  --clr-done: #5B6268;
+  --bg-done: initial;
+  --ts-clr: #51afef;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #51afef;
+  --bg-constant: initial;
+  --clr-constant: #a9a1e1;
+  --bg-comment: initial;
+  --clr-comment: #5B6268;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #c678dd;
+  --bg-variable: initial;
+  --clr-variable: #dcaeea;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #51afef;
+  --bg-doc: initial;
+  --clr-doc: #83898d;
+  --bg-builtin: initial;
+  --clr-builtin: #c678dd;
+  --bg-string: initial;
+  --clr-string: #98be65;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #content {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #content {
+    width: 768px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    align-items: flex-end;
+  }
+  #content {
+    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
+    margin-right: var(--mg);
+  }
+}
+
+h1 {
+  color: var(--clr-title);
+  text-align: center;
+}
+h2, h3, h4, h5, h6, h7 {
+  font-family: Sans Serif;
+}
+h2 {
+  line-height: 2.5em;
+}
+h2::before {
+  content: "◉ ";
+}
+h3::before {
+  content: "✸ ";
+}
+h4::before {
+  content: "▷ ";
+}
+
+code {
+  color: var(--clr-code);
+  background: var(--bg-code);
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+pre {
+  padding: 20px;
+  border: 1px solid var(--bc-block);
+  background: var(--bg-block);
+  font-size: 0.9rem;
+  overflow-x: scroll;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.todo {
+  color: var(--clr-todo);
+  background: var(--bg-todo);
+}
+
+.done {
+  color: var(--clr-done);
+  background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+  font-size: 0.8rem;
+  color: var(--clr-ts);
+}
+
+table {
+  width: 100%;
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  color: var(--clr-tb-hd);
+  background: var(--bg-tb-hd);
+}
+
+td, th {
+  border: thin solid var(--bc-tb);
+}
+
+li {
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#table-of-contents > h2 {
+  display: none;
+}
+
+#table-of-contents {
+  border: thin solid var(--bc-block);
+  background: var(--bg-block);
+}
+
+#toggle-toc {
+  display: none;
+}
+
+.toc-show {
+  display: block!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2em;
+    line-height: 2em;
+    display: block;
+  }
+  #table-of-contents {
+    background: var(--bg);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+  #table-of-contents a {
+    color: var(--clr);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #table-of-contents {
+    font-size: 0.8rem;
+    position: fixed;
+    left: var(--mg);
+    top: var(--mg);
+    bottom: var(--mg);
+    width: var(--w-toc);
+    overflow-y: scroll;
+  }
+}
+
+#table-of-contents::-webkit-scrollbar {
+  display: none;
+}
+
+#table-of-contents {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.MathJax_Display {
+  font-size: 1.25em;
+}
+
+#toggle-theme {
+  border-width: 0;
+  line-height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background: var(--bg-block);
+  color: var(--clr-code);
+}
+
+#toggle-theme:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-theme {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #toggle-theme {
+    position: absolute;
+    top: var(--mg);
+    right: var(--mg);
+    border-radius: 5px;
+  }
+}
+
+.theme-transition {
+  transition: all 0.5s;
+}
+
+.status {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  ul {
+    padding-left: .5em;
+    margin-left: 0;
+  }
+  li {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+/*]]>*/-->
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id="toggle-theme">dark theme</div><div id="toggle-toc">&#9776;</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Intro to Java
+<br />
+<span class="subtitle">College of Optics and Photonics</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org27ee9dc">Table of Contents&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></a></li>
+<li><a href="#what-is-java">What is Java?</a></li>
+<li><a href="#why-java">Why Java?</a></li>
+<li><a href="#anatomy-of-a-basic-program">Anatomy of a Basic Program</a>
+<ul>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#the-main-method">The <kbd>main()</kbd> Method</a></li>
+<li><a href="#system-output">System Output</a>
+<ul>
+<li><a href="#org44f137a">String Concatenation</a></li>
+</ul>
+</li>
+<li><a href="#compiling-programs">Compiling Programs</a>
+<ul>
+<li><a href="#orge0eed5e">Compiling Multiple Source files into One Program</a></li>
+<li><a href="#org90fc3e2">Jar Files and Compiled Projects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#primitive-data-types-in-java">Primitive Data Types in Java</a>
+<ul>
+<li><a href="#integers">Integers</a>
+<ul>
+<li><a href="#org903fb54"><kbd>int</kbd></a></li>
+<li><a href="#org9bd59ab">The <kbd>Integer</kbd> Class</a></li>
+</ul>
+</li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#floats-and-doubles">Floats and Doubles</a></li>
+</ul>
+</li>
+<li><a href="#data-structures">Data Structures</a>
+<ul>
+<li><a href="#arrays">Arrays</a>
+<ul>
+<li><a href="#orgdebb823">Command-Line Arguments</a></li>
+</ul>
+</li>
+<li><a href="#arraylists">ArrayLists</a></li>
+<li><a href="#linked-lists">Linked Lists</a></li>
+</ul>
+</li>
+<li><a href="#errors-and-exceptions">Errors and Exceptions</a>
+<ul>
+<li><a href="#flow-control">Flow Control</a></li>
+<li><a href="#checked-vs-unchecked-exceptions">Checked vs Unchecked Exceptions</a></li>
+<li><a href="#user-defined-exceptions">User-Defined Exceptions</a>
+<ul>
+<li><a href="#org88c095e"><span class="todo TODO">TODO</span> The <kbd>printStackTrace()</kbd> Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#writing-documentation">Writing Documentation</a></li>
+<li><a href="#good-coding-practices">Good Coding Practices</a>
+<ul>
+<li><a href="#naming-conventions-for-variables">Naming Conventions for Variables</a></li>
+<li><a href="#avoiding-magic-numbers">Avoiding &ldquo;Magic Numbers&rdquo;</a></li>
+<li><a href="#style-guide">Style Guide</a>
+<ul>
+<li><a href="#orge4d4383">Curly Braces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#what-is-object-oriented-programming">What is Object-Oriented Programming?</a>
+<ul>
+<li><a href="#what-is-an-object">What is an Object?</a></li>
+<li><a href="#abstraction">Abstraction</a>
+<ul>
+<li><a href="#org1a3d326">Abstract Classes</a></li>
+<li><a href="#org4efc0ec">Interfaces</a></li>
+</ul>
+</li>
+<li><a href="#inheritance">Inheritance</a>
+<ul>
+<li><a href="#orga399234">Classes and Subclasses</a></li>
+<li><a href="#org83890d1"><span class="todo TODO">TODO</span> Method Overloading</a></li>
+<li><a href="#orgcd129a0"><span class="todo TODO">TODO</span> Method Overriding</a></li>
+</ul>
+</li>
+<li><a href="#encapsulation">Encapsulation</a>
+<ul>
+<li><a href="#orgeb27d36">Class Variance and Invariance</a></li>
+</ul>
+</li>
+<li><a href="#polymorphism">Polymorphism</a>
+<ul>
+<li><a href="#org192588d">Types of Polymorphism</a></li>
+<li><a href="#orgc896c9f">Polymorphism with Inheritance</a></li>
+</ul>
+</li>
+<li><a href="#access-modifiers">Access Modifiers</a></li>
+<li><a href="#generic-types">Generic Types</a>
+<ul>
+<li><a href="#org9995a84">Instantiating Generics</a></li>
+<li><a href="#org1a9938b">Multiple Generic Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#multithreading">Multithreading</a>
+<ul>
+<li><a href="#what-is-a-thread">What is a Thread?</a></li>
+<li><a href="#utilizing-the-thread-class">Utilizing the Thread Class</a></li>
+<li><a href="#mutex-locks">Mutex Locks</a></li>
+</ul>
+</li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org27ee9dc" class="outline-2">
+<h2 id="org27ee9dc">Table of Contents&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></h2>
+<div class="outline-text-2" id="text-org27ee9dc">
+<ul class="org-ul">
+<li><a href="#what-is-java">What is Java?</a></li>
+<li><a href="#why-java">Why Java?</a></li>
+<li><a href="#anatomy-of-a-basic-program">Anatomy of a Basic Program</a>
+<ul class="org-ul">
+<li><a href="#classes">Classes</a></li>
+<li><a href="#the-main-method">The <kbd>main()</kbd> Method</a></li>
+<li><a href="#system-output">System Output</a></li>
+<li><a href="#compiling-programs">Compiling Programs</a></li>
+</ul></li>
+<li><a href="#primitive-data-types-in-java">Primitive Data Types in Java</a>
+<ul class="org-ul">
+<li><a href="#integers">Integers</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#floats-and-doubles">Floats and Doubles</a></li>
+</ul></li>
+<li><a href="#data-structures">Data Structures</a>
+<ul class="org-ul">
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#arraylists">ArrayLists</a></li>
+<li><a href="#linked-lists">Linked Lists</a></li>
+</ul></li>
+<li><a href="#errors-and-exceptions">Errors and Exceptions</a>
+<ul class="org-ul">
+<li><a href="#flow-control">Flow Control</a></li>
+<li><a href="#checked-vs-unchecked-exceptions">Checked vs Unchecked Exceptions</a></li>
+<li><a href="#user-defined-exceptions">User-Defined Exceptions</a></li>
+</ul></li>
+<li><a href="#writing-documentation">Writing Documentation</a></li>
+<li><a href="#good-coding-practices">Good Coding Practices</a>
+<ul class="org-ul">
+<li><a href="#naming-conventions-for-variables">Naming Conventions for Variables</a></li>
+<li><a href="#avoiding-magic-numbers">Avoiding &ldquo;Magic Numbers&rdquo;</a></li>
+<li><a href="#style-guide">Style Guide</a></li>
+</ul></li>
+<li><a href="#what-is-object-oriented-programming">What is Object-Oriented Programming?</a>
+<ul class="org-ul">
+<li><a href="#what-is-an-object">What is an Object?</a></li>
+<li><a href="#abstraction">Abstraction</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#polymorphism">Polymorphism</a></li>
+<li><a href="#access-modifiers">Access Modifiers</a></li>
+<li><a href="#generic-types">Generic Types</a></li>
+</ul></li>
+<li><a href="#multithreading">Multithreading</a>
+<ul class="org-ul">
+<li><a href="#what-is-a-thread">What is a Thread?</a></li>
+<li><a href="#utilizing-the-thread-class">Utilizing the Thread Class</a></li>
+<li><a href="#mutex-locks">Mutex Locks</a></li>
+</ul></li>
+<li><a href="#sources">Sources</a></li>
+<li><a href="#footnotes">Footnotes</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-what-is-java" class="outline-2">
+<h2 id="what-is-java">What is Java?</h2>
+<div class="outline-text-2" id="text-what-is-java">
+<p>
+Java is an Object-Oriented, Compiled programming language that is syntactically very similar to C.
+</p>
+</div>
+</div>
+<div id="outline-container-why-java" class="outline-2">
+<h2 id="why-java">Why Java?</h2>
+<div class="outline-text-2" id="text-why-java">
+<ul class="org-ul">
+<li>Consistently one of the top 5 languages for the last 20 years</li>
+<li>Considered a &ldquo;step up&rdquo; in functionality from plain C</li>
+<li>Provides a &ldquo;write once, run anywhere&rdquo; approach which is enabled by the use of the Java virtual machine (JVM)</li>
+<li>Automatic memory management <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup></li>
+<li>Has the slight edge in offering higher-level multi-threading constructs OOTB <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-anatomy-of-a-basic-program" class="outline-2">
+<h2 id="anatomy-of-a-basic-program">Anatomy of a Basic Program</h2>
+<div class="outline-text-2" id="text-anatomy-of-a-basic-program">
+<p>
+A basic Java program is slightly different from a Python or C program.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">HelloWorld</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Hello, world!"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-classes" class="outline-3">
+<h3 id="classes">Classes</h3>
+<div class="outline-text-3" id="text-classes">
+<p>
+A class is a way of grouping related functions or <i>methods</i>.
+</p>
+
+<p>
+A class is defined as follows:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">HelloWorld</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Here's a bunch of methods and fields!</span>
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+In general, class declarations can include these components in order, which we will talk about further in <a href="#what-is-object-oriented-programming">What is Object-Oriented Programming?</a>
+</p>
+
+<ol class="org-ol">
+<li>Modifiers: A class can be public or have default access <a href="#access-modifiers">Access Modifiers</a>.</li>
+<li>Class name: The class name should begin with the initial letter capitalized by <a href="#naming-conventions-for-variables">convention</a>.</li>
+<li>Superclass: The name of the class’s parent (superclass), if any, denoted by <kbd>extends</kbd>. A class can only have one parent.</li>
+<li>Interfaces: A comma-separated list of interfaces implemented by the class, if any, denoted by <kbd>implements</kbd>. A class can implement more than one interface.</li>
+</ol>
+
+<p>
+NOTE: If a class is named HelloWorld, then the file must also be named <kbd>HelloWorld.java</kbd>, case matched.
+</p>
+</div>
+</div>
+<div id="outline-container-the-main-method" class="outline-3">
+<h3 id="the-main-method">The <kbd>main()</kbd> Method</h3>
+<div class="outline-text-3" id="text-the-main-method">
+<p>
+The main method <i>signature</i> is how the Java file runs, much like in C.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span> <span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #7aa2f7;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #a9b1d6;">)</span>
+    <span style="color: #a9b1d6;">{</span>
+        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
+    <span style="color: #a9b1d6;">}</span>
+
+</pre>
+</div>
+
+<p>
+Unlike C:
+</p>
+<ul class="org-ul">
+<li>Every method, including the main method, must be a part of a class.</li>
+<li>The return type is <kbd>void</kbd> and not <kbd>int</kbd></li>
+<li>Java&rsquo;s <kbd>main()</kbd> method can input an array of strings that correspond to command line arguments by default.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-system-output" class="outline-3">
+<h3 id="system-output">System Output</h3>
+<div class="outline-text-3" id="text-system-output">
+<p>
+There are three methods generally used to produce system output.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    System.out.println<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"1"</span><span style="color: #a9b1d6;">)</span>;
+    System.out.print<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"2\n"</span><span style="color: #a9b1d6;">)</span>;
+    System.out.printf<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"3\n"</span><span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+
+<p>
+<kbd>System.out.printf()</kbd> is only used if the advanced formatting of printf is needed. otherwise, <kbd>print()</kbd> or <kbd>println()</kbd> are used.
+</p>
+</div>
+<div id="outline-container-org44f137a" class="outline-4">
+<h4 id="org44f137a">String Concatenation</h4>
+<div class="outline-text-4" id="text-org44f137a">
+<p>
+Concatenating strings for printing in Java is as easy as in Python.
+</p>
+<div class="org-src-container">
+<pre class="src src-java">    System.out.println<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Check "</span> + <span style="color: var(--clr-string); background-color: var(--bg-string);">"out "</span> + <span style="color: var(--clr-string); background-color: var(--bg-string);">"these "</span> + <span style="color: var(--clr-string); background-color: var(--bg-string);">"sentences!"</span><span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-compiling-programs" class="outline-3">
+<h3 id="compiling-programs">Compiling Programs</h3>
+<div class="outline-text-3" id="text-compiling-programs">
+<p>
+Compiling programs is fairly simple. Given as the polyoculus code has all of the files compiled using a program called <b>Make</b>, you won&rsquo;t have to do this step unless you create a new file that is not recognized by the <kbd>makefiles</kbd>.
+However, if you need to create and compile a new file, it&rsquo;s as easy as
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">This command compiles the .java file into a bytecode file with the extension .class.</span>
+javac HelloWorld.java
+<span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);"># </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">This command then compiles and runs that .class file in the Java virtual machine.</span>
+java HelloWorld
+</pre>
+</div>
+
+<p>
+NOTE: When <b>compiling</b> the source code with <kbd>javac</kbd>, you need to include the file extension. When <b>running</b> the compiled code, you do not.
+</p>
+</div>
+
+<div id="outline-container-orge0eed5e" class="outline-4">
+<h4 id="orge0eed5e">Compiling Multiple Source files into One Program</h4>
+<div class="outline-text-4" id="text-orge0eed5e">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">HelloWorld</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">smile</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">":D"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Hello world!"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">SetUp</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"What does the previous class have to say:"</span><span style="color: #ff9e64;">)</span>;
+        HelloWorld.smile<span style="color: #ff9e64;">()</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+If we compile and run <kbd>SetUp.java</kbd>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">javac SetUp.java
+java SetUp
+</pre>
+</div>
+
+<p>
+We will see the results below:
+</p>
+
+<pre class="example">
+What does the previous class have to say:
+:)
+</pre>
+</div>
+<ul class="org-ul">
+<li><a id="org9a60959"></a>Notes on Compilation<br />
+<div class="outline-text-5" id="text-org9a60959">
+<p>
+When we try and compile <kbd>SetUp.java</kbd>, the compiler sees that <kbd>HelloWorld.smile()</kbd> line.
+</p>
+
+<p>
+It won&rsquo;t find a system class named <kbd>HelloWorld</kbd>, but it knows that if there&rsquo;s such a class defined locally, it will be in a file called <kbd>HelloWorld.java</kbd>.
+</p>
+
+<p>
+So it opens that file and compiles it along with <kbd>SetUp.java</kbd>. That&rsquo;s why Java requires us to write public classes in files with their corresponding names.
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org90fc3e2" class="outline-4">
+<h4 id="org90fc3e2">Jar Files and Compiled Projects</h4>
+<div class="outline-text-4" id="text-org90fc3e2">
+</div>
+<ul class="org-ul">
+<li><a id="org192cf8f"></a>Jar Files<br />
+<div class="outline-text-5" id="text-org192cf8f">
+<p>
+A JAR file is a Java ARchive file that is similar to a <kbd>.zip</kbd> extension. They may or may not be executable; on Windows systems double clicking a <kbd>.jar</kbd> file will automatically unpack and run whatever is in the archive with the invocation <code class="src src-bash">java -jar foo.jar</code>.
+</p>
+</div>
+</li>
+<li><a id="org57d48f5"></a>Make<br />
+<div class="outline-text-5" id="text-org57d48f5">
+<p>
+<b>Make</b> is a program that automates compilation of source code files into executables. Rather than having to compile tens to hundreds of individual files manually, writing a Makefile allows for the compilation step to be completed without human interaction.
+</p>
+
+<p>
+The Makefile requires a specification of the compiler, and any flags that are passed in.
+</p>
+
+<p>
+Here is an example:
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-primitive-data-types-in-java" class="outline-2">
+<h2 id="primitive-data-types-in-java">Primitive Data Types in Java</h2>
+<div class="outline-text-2" id="text-primitive-data-types-in-java">
+<p>
+In Java, each primitive data type also has a corresponding Class. Each of these classes supplements the primitive type with various methods and predefined values.
+They are all very well documented on the javadocs, so we will explore just one. We will also discuss strings, as they are a different in Java than in languages like C.
+</p>
+</div>
+<div id="outline-container-integers" class="outline-3">
+<h3 id="integers">Integers</h3>
+<div class="outline-text-3" id="text-integers">
+</div>
+<div id="outline-container-org903fb54" class="outline-4">
+<h4 id="org903fb54"><kbd>int</kbd></h4>
+<div class="outline-text-4" id="text-org903fb54">
+<p>
+In most<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> programming languages, an int is defined as 32 bits by default.
+<b>But</b>, that can vary from system to system. There is no guarantee that an <kbd>int</kbd> will be 32 bits on all systems. This is historically a problem with languages like C.
+</p>
+
+<p>
+This is an issue if you need to compute an integer that may be greater or less than \(\approx\) 33,000 and integers are 16-bit.
+</p>
+
+<p>
+Java solves this by compiling code first to byte-code in a <kbd>.class</kbd> file, which then gets executed by the JVM to ensure that the program runs the same on any machine.
+</p>
+</div>
+</div>
+<div id="outline-container-org9bd59ab" class="outline-4">
+<h4 id="org9bd59ab">The <kbd>Integer</kbd> Class</h4>
+<div class="outline-text-4" id="text-org9bd59ab">
+<p>
+In contrast with the primitive <kbd>int</kbd> type, Integer is a built-in class that has a number of useful methods such as the maximum and minimum values for an integer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    System.out.println<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">Integer</span>.<span style="color: #c0caf5;">MAX_VALUE</span><span style="color: #a9b1d6;">)</span>;
+    System.out.println<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">Integer</span>.MIN_VALUE<span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+
+<p>
+There are some other syntactic differences as well, such as comparing values:
+</p>
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">primitive</span> = <span style="color: #ff9e64; font-weight: bold;">10</span>;
+    <span style="color: #c0caf5;">Integer</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">fancy</span> = <span style="color: #ff9e64; font-weight: bold;">10</span>;
+    System.out.println<span style="color: #a9b1d6;">(</span>primitive == <span style="color: #ff9e64; font-weight: bold;">10</span><span style="color: #a9b1d6;">)</span>;
+    System.out.println<span style="color: #a9b1d6;">(</span>fancy.equals<span style="color: #7aa2f7;">(</span><span style="color: #ff9e64; font-weight: bold;">10</span><span style="color: #7aa2f7;">)</span><span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-strings" class="outline-3">
+<h3 id="strings">Strings</h3>
+<div class="outline-text-3" id="text-strings">
+<p>
+In C, a string is an <b>array</b> of characters. In Java, strings are <b>immutable</b> objects. <b>Immutable</b> objects mean that once they are created, they cannot be changed. This means that every time you create a string, it does not modify the previous string, it creates a new one.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">This is how you would make an array in a language like C.</span>
+    <span style="color: #c0caf5;">char</span><span style="color: #a9b1d6;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">helloChar</span> = <span style="color: #a9b1d6;">{</span><span style="color: var(--clr-string); background-color: var(--bg-string);">'h'</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">'e'</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">'l'</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">'l'</span>, <span style="color: var(--clr-string); background-color: var(--bg-string);">'o'</span><span style="color: #a9b1d6;">}</span>;
+    <span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">helloString</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">String</span><span style="color: #a9b1d6;">(</span>helloChar<span style="color: #a9b1d6;">)</span>;
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Check the type of each "string"</span>
+    System.out.println<span style="color: #a9b1d6;">(</span>helloChar.getClass<span style="color: #7aa2f7;">()</span>.getName<span style="color: #7aa2f7;">()</span><span style="color: #a9b1d6;">)</span>;
+    System.out.println<span style="color: #a9b1d6;">(</span>helloString.getClass<span style="color: #7aa2f7;">()</span>.getName<span style="color: #7aa2f7;">()</span><span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+
+<p>
+This immutable property is important as it affects the <b>runtime</b> of the program, as every time you create a string, it is an O(k) operation, where k is the length of the string. If you are doing this operation many thousands of times, it can slow down your program significantly.
+</p>
+</div>
+</div>
+<div id="outline-container-floats-and-doubles" class="outline-3">
+<h3 id="floats-and-doubles">Floats and Doubles</h3>
+<div class="outline-text-3" id="text-floats-and-doubles">
+</div>
+</div>
+</div>
+<div id="outline-container-data-structures" class="outline-2">
+<h2 id="data-structures">Data Structures</h2>
+<div class="outline-text-2" id="text-data-structures">
+</div>
+<div id="outline-container-arrays" class="outline-3">
+<h3 id="arrays">Arrays</h3>
+<div class="outline-text-3" id="text-arrays">
+<p>
+Arrays are very much like lists in Python. In Java, all arrays are dynamically allocated, and are stored <b>contiguously</b>.
+Arrays can be of any object type, and can be n-dimensional.
+</p>
+
+<p>
+Java auto-initializes all array values and class fields to 0.
+</p>
+
+<p>
+An array in Java is initialized in a specific way:
+</p>
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: #c0caf5;">char</span> <span style="color: #a9b1d6;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">array</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">char</span><span style="color: #a9b1d6;">[</span><span style="color: #ff9e64; font-weight: bold;">15</span><span style="color: #a9b1d6;">]</span>;
+    System.out.println<span style="color: #a9b1d6;">(</span>array.length<span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdebb823" class="outline-4">
+<h4 id="orgdebb823">Command-Line Arguments</h4>
+<div class="outline-text-4" id="text-orgdebb823">
+<p>
+A cool part of the <kbd>main()</kbd> function in Java is that, by default, you can pass command-line arguments and read them quite simply.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">CommandLineArgs</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #ff9e64;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">i</span> = <span style="color: #ff9e64; font-weight: bold;">0</span>; i &lt; args.<span style="color: #c0caf5;">length</span>; i++<span style="color: #ff9e64;">)</span>
+            System.out.println<span style="color: #ff9e64;">(</span>args<span style="color: #73daca;">[</span>i<span style="color: #73daca;">]</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">javac CommandLineArgs.java
+java CommandLineArgs check out these arguments!
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-arraylists" class="outline-3">
+<h3 id="arraylists">ArrayLists</h3>
+<div class="outline-text-3" id="text-arraylists">
+<p>
+An <kbd>ArrayList</kbd> is a resizable object array that is contiguous in memory, much like an array. In fact, it is almost identical to an array, save for the fact that it implements the List interface.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Note the specification of the type of arraylist here, in brackets.</span>
+    <span style="color: #c0caf5;">ArrayList</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">String</span><span style="color: #a9b1d6;">&gt;</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">trucks</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">ArrayList</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">String</span><span style="color: #a9b1d6;">&gt;()</span>;
+    trucks.add<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Ford Super Duty"</span><span style="color: #a9b1d6;">)</span>;
+    trucks.add<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Toyota Tundra"</span><span style="color: #a9b1d6;">)</span>;
+    trucks.add<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"RAM 1500"</span><span style="color: #a9b1d6;">)</span>;
+    trucks.add<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Toyota Tacoma"</span><span style="color: #a9b1d6;">)</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">truck</span> : trucks<span style="color: #a9b1d6;">)</span>
+        System.out.println<span style="color: #a9b1d6;">(</span>truck<span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+
+<p>
+NOTE: Make sure to import <kbd>java.util.ArrayList</kbd>.
+</p>
+</div>
+</div>
+<div id="outline-container-linked-lists" class="outline-3">
+<h3 id="linked-lists">Linked Lists</h3>
+<div class="outline-text-3" id="text-linked-lists">
+<p>
+In Java, unlike in C, one can call a <kbd>LinkedList</kbd> without having to make one from scratch. This is really handy, as it has already been optimized for usage and doesn&rsquo;t have to be rewritten.
+The <kbd>LinkedList</kbd> and the <kbd>ArrayList</kbd> classes have the same methods as they both implement the List interface. This the add, change, and remove methods are called in the same way.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: #c0caf5;">LinkedList</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">String</span><span style="color: #a9b1d6;">&gt;</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">listy</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">LinkedList</span><span style="color: #a9b1d6;">&lt;&gt;()</span>;
+    listy.add<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Hello"</span><span style="color: #a9b1d6;">)</span>;
+    listy.add<span style="color: #a9b1d6;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"World!"</span><span style="color: #a9b1d6;">)</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">list</span> : listy<span style="color: #a9b1d6;">)</span>
+        System.out.println<span style="color: #a9b1d6;">(</span>list<span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-errors-and-exceptions" class="outline-2">
+<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+<div class="outline-text-2" id="text-errors-and-exceptions">
+<p>
+In Java, there are two types of issues that may arise with a program, <b>errors</b> and <b>exceptions</b>.
+Both errors and exceptions are subclasses of the <kbd>java.lang.Throwable</kbd> class.
+</p>
+
+<p>
+Errors are serious problems that are outside of control of the program, like a memory error, or a stack overflow error.
+Often, Errors cannot be found until the program is compiled and run.
+</p>
+
+<p>
+Exceptions are related to issues that can be recovered from within the program.
+This includes things like accessing an array out of bounds, sending an illegal argument to a method,
+There are two types of &ldquo;errors&rdquo; that occur with Java.
+</p>
+</div>
+<div id="outline-container-flow-control" class="outline-3">
+<h3 id="flow-control">Flow Control</h3>
+<div class="outline-text-3" id="text-flow-control">
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">try</span>
+    <span style="color: #a9b1d6;">{</span>
+        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
+    <span style="color: #a9b1d6;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">catch</span><span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">Exception</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">e</span><span style="color: #a9b1d6;">)</span>
+    <span style="color: #a9b1d6;">{</span>
+        System.out.println<span style="color: #7aa2f7;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Oops! There was an exception!"</span><span style="color: #7aa2f7;">)</span>;
+    <span style="color: #a9b1d6;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">finally</span>
+        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">...</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-checked-vs-unchecked-exceptions" class="outline-3">
+<h3 id="checked-vs-unchecked-exceptions">Checked vs Unchecked Exceptions</h3>
+<div class="outline-text-3" id="text-checked-vs-unchecked-exceptions">
+<p>
+<b>Checked</b> exceptions are the exceptions that are caught at compile time.
+Within checked exceptions, there are fully checked and partially checked exceptions.
+</p>
+
+<p>
+<b>Unchecked</b> exceptions are not checked and found at compile time.
+Unchecked exceptions are things like <kbd>NullPointerException</kbd>, where the program is trying to access a null pointer in memory.
+</p>
+</div>
+</div>
+<div id="outline-container-user-defined-exceptions" class="outline-3">
+<h3 id="user-defined-exceptions">User-Defined Exceptions</h3>
+<div class="outline-text-3" id="text-user-defined-exceptions">
+<p>
+Sometimes there are instances in which something will break in a way that is very specific to the program. This might mean that there is nothing built-in to Java to check when an exception may occur, and the programmer may need to create their own.
+</p>
+</div>
+
+<div id="outline-container-org88c095e" class="outline-4">
+<h4 id="org88c095e"><span class="todo TODO">TODO</span> The <kbd>printStackTrace()</kbd> Method</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-writing-documentation" class="outline-2">
+<h2 id="writing-documentation">Writing Documentation</h2>
+<div class="outline-text-2" id="text-writing-documentation">
+<p>
+The Javadoc <a href="https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html#exampleresult">developer tutorial</a> is very helpful for understanding how to write effective documentation for Java files.
+</p>
+
+<p>
+Java documentation, as taken from the website above, has the general format:
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org440783a"><span style="color: var(--clr-doc); background-color: var(--bg-doc);">/**</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * Returns an Image object that can then be painted on the screen.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * The url argument must specify an absolute </span><span style="color: #ff9e64; background-color: var(--bg-doc);">&lt;a href="#</span><span style="color: #ff9e64; background-color: var(--bg-doc);">{@link}</span><span style="color: #ff9e64; background-color: var(--bg-doc);">"&gt;{@link URL}&lt;/a&gt;</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">. The name</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * argument is a specifier that is relative to the url argument.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * </span><span style="color: #ff9e64; background-color: var(--bg-doc);">&lt;p&gt;</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * This method always returns immediately, whether or not the</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * image exists. When this applet attempts to draw the image on</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * the screen, the data will be loaded. The graphics primitives</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * that draw the image will incrementally paint on the screen.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> *</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * </span><span style="color: #ff9e64; background-color: var(--bg-doc);">@param</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">  url  an absolute URL giving the base location of the image</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * </span><span style="color: #ff9e64; background-color: var(--bg-doc);">@param</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">  name the location of the image, relative to the url argument</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * </span><span style="color: #ff9e64; background-color: var(--bg-doc);">@return</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">      the image at the specified URL</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * </span><span style="color: #ff9e64; background-color: var(--bg-doc);">@see</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">         Image</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> */</span>
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">Image</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">getImage</span><span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">URL</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">url</span>, <span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span><span style="color: #a9b1d6;">)</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">try</span> <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> getImage<span style="color: #ff9e64;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">URL</span><span style="color: #73daca;">(</span>url, name<span style="color: #73daca;">)</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">catch</span> <span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">MalformedURLException</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">e</span><span style="color: #7aa2f7;">)</span> <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> <span style="color: var(--clr-constant); background-color: var(--bg-constant);">null</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-good-coding-practices" class="outline-2">
+<h2 id="good-coding-practices">Good Coding Practices</h2>
+<div class="outline-text-2" id="text-good-coding-practices">
+</div>
+<div id="outline-container-naming-conventions-for-variables" class="outline-3">
+<h3 id="naming-conventions-for-variables">Naming Conventions for Variables</h3>
+<div class="outline-text-3" id="text-naming-conventions-for-variables">
+<p>
+In Java programming, there are a few important naming conventions that should be followed for legibility.
+</p>
+
+<p>
+You will find in multiple locations in the legacy code where this is not followed; although it would be most appropriate to fix every one of these instances, it would become a large undertaking to do this for every package used.
+</p>
+
+<p>
+For the code directly related to polyoculus, these naming conventions should be followed, and for things like the INDI package, it isn&rsquo;t necessary to fix, since this is beyond the scope of our project.
+</p>
+
+<p>
+These are all naming conventions that are used throughout the &ldquo;Java-speaking&rdquo; world, and you can find the full naming convention document <a href="https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html">here</a>.
+</p>
+
+<ul class="org-ul">
+<li>All Java variables are named in <b>camelCase</b>, where each portion of the word is capitalized without spaces. In Python, names are usually in <b>snake<sub>case</sub></b>, where all variables are in lower case and separated by underscores.</li>
+<li>Classes should be nouns with their first letter capitalized. They should be simple and adequately describe the class.</li>
+<li>Methods should be verbs, which the first letter of each subsequent word is capitalized.</li>
+<li>Constants should be in all caps, with underscores delineating spaces.</li>
+</ul>
+
+<p>
+Below is a simple example using all of these naming conventions:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">NameExample</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">final</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">MAX_RAND</span> = <span style="color: #ff9e64; font-weight: bold;">100</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">generateNumber</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> <span style="color: #ff9e64;">(</span><span style="color: #c0caf5;">int</span><span style="color: #ff9e64;">)(</span>Math.random<span style="color: #73daca;">()</span> * MAX_RAND + <span style="color: #ff9e64; font-weight: bold;">1</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span>generateNumber<span style="color: #73daca;">()</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-avoiding-magic-numbers" class="outline-3">
+<h3 id="avoiding-magic-numbers">Avoiding &ldquo;Magic Numbers&rdquo;</h3>
+<div class="outline-text-3" id="text-avoiding-magic-numbers">
+<p>
+Magic numbers present a multitude of problems for both program writers and readers.
+</p>
+<ul class="org-ul">
+<li>Hard-coding a number obfuscates the purpose of that number.</li>
+<li>Updating magic numbers becomes difficult when they are used in multiple places within a codebase. For our purposes, &ldquo;magic variables&rdquo; become an almost impossible task to track down.</li>
+</ul>
+
+<p>
+A <b>bad</b> example of having a magic number, in this instance within a for loop.
+</p>
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">array</span> <span style="color: #a9b1d6;">[]</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">int</span><span style="color: #a9b1d6;">[</span><span style="color: #ff9e64; font-weight: bold;">10</span><span style="color: #a9b1d6;">]</span>;
+     ...
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">i</span> = <span style="color: #ff9e64; font-weight: bold;">0</span>; i &lt; <span style="color: #ff9e64; font-weight: bold;">10</span>; i++<span style="color: #a9b1d6;">)</span>
+        System.out.println<span style="color: #a9b1d6;">(</span>array<span style="color: #7aa2f7;">[</span>i<span style="color: #7aa2f7;">]</span><span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+
+<p>
+A <b>good</b> example of removing magic numbers from the code by calling the array&rsquo;s builtin <kbd>.length</kbd> function.
+</p>
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: #c0caf5;">int</span> <span style="color: #a9b1d6;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">array</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">int</span><span style="color: #a9b1d6;">[</span><span style="color: #ff9e64; font-weight: bold;">10</span><span style="color: #a9b1d6;">]</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">i</span> = <span style="color: #ff9e64; font-weight: bold;">0</span>; i &lt; array.<span style="color: #c0caf5;">length</span>; i++<span style="color: #a9b1d6;">)</span>
+        System.out.println<span style="color: #a9b1d6;">(</span>array<span style="color: #7aa2f7;">[</span>i<span style="color: #7aa2f7;">]</span><span style="color: #a9b1d6;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-style-guide" class="outline-3">
+<h3 id="style-guide">Style Guide</h3>
+<div class="outline-text-3" id="text-style-guide">
+<p>
+According to the Java specification from Oracle, these are some spacing rules:
+</p>
+
+<ul class="org-ul">
+<li>A blank space should appear after commas in argument lists.</li>
+<li>All binary operators except . should be separated from their operands by spaces.</li>
+<li>Blank spaces should never separate unary operators such as unary minus, increment (&ldquo;++&rdquo;), and decrement (&ldquo;&#x2013;&rdquo;) from their operands.</li>
+</ul>
+</div>
+
+<div id="outline-container-orge4d4383" class="outline-4">
+<h4 id="orge4d4383">Curly Braces</h4>
+<div class="outline-text-4" id="text-orge4d4383">
+<p>
+There are a few options for writing curly braces for methods and classes. The most common and preferred method is the One True Brace Style or <b>OBTS</b>.
+This is also sometimes referred to as &ldquo;Egyptian Braces&rdquo; style.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">checkNegative</span><span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">x</span><span style="color: #a9b1d6;">)</span> <span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> <span style="color: #7aa2f7;">(</span>x &lt; <span style="color: #ff9e64; font-weight: bold;">0</span><span style="color: #7aa2f7;">)</span> <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Negative"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">else</span> <span style="color: #7aa2f7;">{</span>
+        nonNegative<span style="color: #ff9e64;">(</span>x<span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+Another style is the <b>K&amp;R</b> style, which is the standard style used in C. It places the curly braces on separate lines, which helps delineate code blocks.
+In K&amp;R, single line blocks do not have curly braces.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">checkNegative</span><span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">x</span><span style="color: #a9b1d6;">)</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> <span style="color: #7aa2f7;">(</span>x &lt; <span style="color: #ff9e64; font-weight: bold;">0</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        absx = x * -<span style="color: #ff9e64; font-weight: bold;">1</span>;
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Negative"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">else</span>
+        nonNegative<span style="color: #7aa2f7;">(</span>x<span style="color: #7aa2f7;">)</span>;
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+For methods that only have a single line, it is appropriate to condense the method as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">Object</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">obj</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">Object</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">get</span><span style="color: #a9b1d6;">(){</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.obj; <span style="color: #a9b1d6;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">set</span><span style="color: #a9b1d6;">(</span><span style="color: #c0caf5;">Object</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">obj</span><span style="color: #a9b1d6;">){</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.obj = obj; <span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-what-is-object-oriented-programming" class="outline-2">
+<h2 id="what-is-object-oriented-programming">What is Object-Oriented Programming?</h2>
+<div class="outline-text-2" id="text-what-is-object-oriented-programming">
+<p>
+The four main principles of Object-Oriented Programming (OOP) are:
+</p>
+
+<ul class="org-ul">
+<li>Abstraction</li>
+<li>Inheritance</li>
+<li>Encapsulation</li>
+<li>Polymorphism</li>
+</ul>
+
+<p>
+We will take a look at all of these in depth.
+</p>
+</div>
+<div id="outline-container-what-is-an-object" class="outline-3">
+<h3 id="what-is-an-object">What is an Object?</h3>
+<div class="outline-text-3" id="text-what-is-an-object">
+<p>
+An <b>object</b> is the atomic unit of the OOP paradigm that represents the real entities interacting within a program.
+The <b>objects</b> interact with each other by invoking <b>methods</b>. An object consists of three main components:
+</p>
+
+<ul class="org-ul">
+<li>State, representated by attributes (i.e. fields)</li>
+<li>Identity, which is the uniqueness property that allows an object to interact with other objects</li>
+<li>Behavior, the actions performed by the methods within an object.</li>
+</ul>
+
+<p>
+The most common example used for explaining objects and OOP in education is a car.
+A car requires the participation of many independent objects working in tandem with each other to function.
+</p>
+</div>
+</div>
+<div id="outline-container-abstraction" class="outline-3">
+<h3 id="abstraction">Abstraction</h3>
+<div class="outline-text-3" id="text-abstraction">
+<p>
+In Java, abstraction is accomplished through the implementation of <kbd>interfaces</kbd> and <kbd>abstract</kbd> classes.
+</p>
+</div>
+<div id="outline-container-org1a3d326" class="outline-4">
+<h4 id="org1a3d326">Abstract Classes</h4>
+<div class="outline-text-4" id="text-org1a3d326">
+<p>
+An abstract class is a restricted class that is used as a template only, and cannot create objects by itself. It may or may not include abstract methods within the class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">abstract</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Creature</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">abstract</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">creatureSound</span><span style="color: #7aa2f7;">()</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">sleep</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Snrk. Mimimimi... zzzz..."</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+If you were to try and create a <kbd>Creature</kbd> object, Java would produce an error.
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #c0caf5;">Creature</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">cat</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Creature</span><span style="color: #a9b1d6;">()</span>; <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">This will generate an error.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4efc0ec" class="outline-4">
+<h4 id="org4efc0ec">Interfaces</h4>
+<div class="outline-text-4" id="text-org4efc0ec">
+<p>
+An <kbd>interface</kbd> is a completely &ldquo;abstract&rdquo; class also used to group related methods, but with empty bodies, unlike abstract classes.
+</p>
+
+<p>
+An <kbd>interface</kbd>, unlike an <kbd>abstract</kbd> class, is like a template where the method signatures are provided and the subclass must fill in the methods.
+</p>
+
+<p>
+Here is an example, where there are multiple interfaces, and a class that extends them both.
+</p>
+<div class="org-src-container">
+<pre class="src src-java" id="org65981ea"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interface</span> <span style="color: #c0caf5;">Creature</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">sleep</span><span style="color: #7aa2f7;">()</span>;
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interface</span> <span style="color: #c0caf5;">Pet</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setVaccineStatus</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">boolean</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">update</span><span style="color: #7aa2f7;">)</span>;
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Cat</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">implements</span> <span style="color: #c0caf5;">Creature</span>, <span style="color: #c0caf5;">Pet</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">boolean</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">vaccine</span> = <span style="color: var(--clr-constant); background-color: var(--bg-constant);">false</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setVaccineStatus</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">boolean</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">update</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.vaccine = update;
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">if</span> <span style="color: #ff9e64;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.vaccine == <span style="color: var(--clr-constant); background-color: var(--bg-constant);">true</span><span style="color: #ff9e64;">)</span>
+            System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"the vaccines are up to date!"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">sleep</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Zzzz... zzzz..."</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Main</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: #c0caf5;">Cat</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">saavik</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Cat</span><span style="color: #ff9e64;">()</span>;
+        saavik.sleep<span style="color: #ff9e64;">()</span>;
+        saavik.setVaccineStatus<span style="color: #ff9e64;">(</span><span style="color: var(--clr-constant); background-color: var(--bg-constant);">true</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+Zzzz... zzzz...
+the vaccines are up to date!
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-inheritance" class="outline-3">
+<h3 id="inheritance">Inheritance</h3>
+<div class="outline-text-3" id="text-inheritance">
+<p>
+Inheritance in Java and other OOP languages is the idea that an object can <b>inherit</b>, or acquire, all of the properties and behaviors of its parent, sort of like in real life. A class can only <kbd>extend</kbd> one other class, as Java does not support multiple inheritance.
+</p>
+
+<p>
+When &gt;= 2 methods in the same class have the same method name but different parameters, this is called <b>overloading</b>. When two methods have the same method name <b>and</b> parameters, this is called method <b>overriding</b>.
+</p>
+</div>
+<div id="outline-container-orga399234" class="outline-4">
+<h4 id="orga399234">Classes and Subclasses</h4>
+<div class="outline-text-4" id="text-orga399234">
+<p>
+Let&rsquo;s take a look at a class for a Person object, which has multiple <b>fields</b> and a <b>constructor</b> method.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgf567cc6"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Person</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">age</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> Person<span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span>, <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">age</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.name = name;
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.age = age;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">toString</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> name + <span style="color: var(--clr-string); background-color: var(--bg-string);">" is "</span> + age + <span style="color: var(--clr-string); background-color: var(--bg-string);">" years old"</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+Now, let&rsquo;s create a child class, that <kbd>extends</kbd> the parent class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java" id="org22c018f"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Student</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extends</span> <span style="color: #c0caf5;">Person</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">studentID</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> Student<span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span>, <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">age</span>, <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">studentID</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">super</span><span style="color: #ff9e64;">(</span>name, age<span style="color: #ff9e64;">)</span>;
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.studentID = studentID;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">toString</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">super</span>.toString<span style="color: #ff9e64;">()</span> + <span style="color: var(--clr-string); background-color: var(--bg-string);">"; student id: "</span> + studentID;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: #c0caf5;">Person</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">jackie</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Person</span><span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Jackie"</span>, <span style="color: #ff9e64; font-weight: bold;">22</span><span style="color: #ff9e64;">)</span>;
+        <span style="color: #c0caf5;">Student</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">alex</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Student</span><span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Alex"</span>, <span style="color: #ff9e64; font-weight: bold;">22</span>, <span style="color: #ff9e64; font-weight: bold;">123456</span><span style="color: #ff9e64;">)</span>;
+
+        System.out.println<span style="color: #ff9e64;">(</span>jackie.toString<span style="color: #73daca;">()</span><span style="color: #ff9e64;">)</span>;
+        System.out.println<span style="color: #ff9e64;">(</span>alex.toString<span style="color: #73daca;">()</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+
+<p>
+There&rsquo;s a lot going on here!
+</p>
+
+<p>
+The class we&rsquo;re extending is called the &ldquo;superclass&rdquo; or &ldquo;parent class.&rdquo;
+The class that&rsquo;s doing the inheriting is called the &ldquo;subclass,&rdquo; &ldquo;child class.&rdquo;
+We say the subclass <kbd>extends</kbd> or &ldquo;inherits from&rdquo; the superclass.
+We can also say &ldquo;the <kbd>subclass</kbd> is a <kbd>superclass</kbd>.&rdquo; In this example, the <b>Student</b> is a <b>Person</b>.
+</p>
+
+<p>
+Inheritance allows us to form hierarchies of inheritance, or &ldquo;taxonomies&rdquo; like in biology.
+</p>
+
+<p>
+The child class inherits all fields and methods from the parent class except for private fields and methods. Those are the parent&rsquo;s secrets, and they are not passed on to the child.
+</p>
+</div>
+</div>
+<div id="outline-container-org83890d1" class="outline-4">
+<h4 id="org83890d1"><span class="todo TODO">TODO</span> Method Overloading</h4>
+</div>
+<div id="outline-container-orgcd129a0" class="outline-4">
+<h4 id="orgcd129a0"><span class="todo TODO">TODO</span> Method Overriding</h4>
+</div>
+</div>
+<div id="outline-container-encapsulation" class="outline-3">
+<h3 id="encapsulation">Encapsulation</h3>
+<div class="outline-text-3" id="text-encapsulation">
+<p>
+Because objects make decisions and enact logic based on their state, we want to make sure that each object manages its own state and protect against state <b>mutations</b> from other outside classes.
+</p>
+
+<p>
+With encapsulationm, the variables or data of a class is hidden from any other class and can be accessed only by what&rsquo;s called colloquially as <kbd>setter</kbd> and <kbd>getter</kbd> functions.
+</p>
+
+<p>
+Some advantages of encapsulation:
+</p>
+<ul class="org-ul">
+<li>Data obfuscation</li>
+<li>Reusability</li>
+<li>Ease of testing</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">EncapsulatedStudent</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">studentID</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">age</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">getAge</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> age;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">getName</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> name;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setAge</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">age</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.age = age;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setName</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.name = name;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: #c0caf5;">EncapsulatedStudent</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">student</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">EncapsulatedStudent</span><span style="color: #ff9e64;">()</span>;
+        student.setName<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Alex"</span><span style="color: #ff9e64;">)</span>;
+        student.setAge<span style="color: #ff9e64;">(</span><span style="color: #ff9e64; font-weight: bold;">22</span><span style="color: #ff9e64;">)</span>;
+
+        System.out.println<span style="color: #ff9e64;">(</span>student.getName<span style="color: #73daca;">()</span> + <span style="color: var(--clr-string); background-color: var(--bg-string);">" aged "</span> + student.getAge<span style="color: #73daca;">()</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+<p>
+Alex aged 22
+</p>
+
+<p>
+NOTE: Stylistically, a setter method and a getter method should both start with <kbd>set</kbd> and <kbd>get</kbd>, respectively.
+</p>
+</div>
+<div id="outline-container-orgeb27d36" class="outline-4">
+<h4 id="orgeb27d36">Class Variance and Invariance</h4>
+</div>
+</div>
+<div id="outline-container-polymorphism" class="outline-3">
+<h3 id="polymorphism">Polymorphism</h3>
+<div class="outline-text-3" id="text-polymorphism">
+<p>
+In Java, polymorphism provides different implementations of a method depending on the type of object passed to that method.
+</p>
+</div>
+
+<div id="outline-container-org192588d" class="outline-4">
+<h4 id="org192588d">Types of Polymorphism</h4>
+<div class="outline-text-4" id="text-org192588d">
+<p>
+You can perform Polymorphism in Java via two different methods:
+</p>
+
+<ul class="org-ul">
+<li>Method Overloading</li>
+<li>Method Overriding</li>
+</ul>
+
+<p>
+Method overloading is the process that can create multiple methods of the same name in the same class, and all the methods work in different ways.
+</p>
+
+<p>
+This is best shown as an example with method constructors:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Shape</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">length</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">width</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">radius</span>;
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">final</span> <span style="color: #c0caf5;">double</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">pi</span> = <span style="color: #ff9e64; font-weight: bold;">3.1415926535</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> Shape<span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">length</span>, <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">width</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.length = length;
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.width = width;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> Shape<span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">radius</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.radius = radius;
+    <span style="color: #7aa2f7;">}</span>
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: #c0caf5;">Shape</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">rectangle</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Shape</span><span style="color: #ff9e64;">(</span><span style="color: #ff9e64; font-weight: bold;">10</span>, <span style="color: #ff9e64; font-weight: bold;">6</span><span style="color: #ff9e64;">)</span>;
+        <span style="color: #c0caf5;">Shape</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">circle</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Shape</span><span style="color: #ff9e64;">(</span><span style="color: #ff9e64; font-weight: bold;">4</span><span style="color: #ff9e64;">)</span>;
+
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"The area of the rectangle is "</span> + rectangle.length * rectangle.width<span style="color: #ff9e64;">)</span>;
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"The area of the circle is "</span> + circle.radius * circle.pi<span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+Here there are two different constructors, one for a circle and one for a rectangle.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc896c9f" class="outline-4">
+<h4 id="orgc896c9f">Polymorphism with Inheritance</h4>
+<div class="outline-text-4" id="text-orgc896c9f">
+<p>
+A superclass named <kbd>Shapes</kbd> has a method called <kbd>area()</kbd>. Subclasses of <kbd>Shapes</kbd> can be <kbd>Triangle</kbd>, <kbd>Circle</kbd>, <kbd>Rectangle</kbd>. Each subclass has its way of calculating area.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Shapes</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">area</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"The formula for area"</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Triangle</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extends</span> <span style="color: #c0caf5;">Shapes</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">area</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Triangle is &#189; * base * height "</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Circle</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extends</span> <span style="color: #c0caf5;">Shapes</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">area</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        System.out.println<span style="color: #ff9e64;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Circle is 3.14 * radius * radius "</span><span style="color: #ff9e64;">)</span>;
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java" id="orgd399818">    <span style="color: #c0caf5;">Shapes</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">shape</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Shapes</span><span style="color: #a9b1d6;">()</span>;
+    <span style="color: #c0caf5;">Circle</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">circle</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Circle</span><span style="color: #a9b1d6;">()</span>;
+    <span style="color: #c0caf5;">Triangle</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">triangle</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Triangle</span><span style="color: #a9b1d6;">()</span>;
+
+    shape.area<span style="color: #a9b1d6;">()</span>;
+    circle.area<span style="color: #a9b1d6;">()</span>;
+    triangle.area<span style="color: #a9b1d6;">()</span>;
+</pre>
+</div>
+
+<p>
+NOTE: when there are multiple classes in the same file, you should <b>not</b> make the classes public.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-access-modifiers" class="outline-3">
+<h3 id="access-modifiers">Access Modifiers</h3>
+<div class="outline-text-3" id="text-access-modifiers">
+<ul class="org-ul">
+<li>public: Accessible in all classes in your application.</li>
+<li>protected: Accessible within the package in which it is defined and in its subclass(es) (including subclasses declared outside the package).</li>
+<li>private: Accessible only within the class in which it is defined.</li>
+<li>default (declared/defined without using any modifier): Accessible within the same class and package within which its class is defined.</li>
+</ul>
+
+<p>
+<a href="https://res.cloudinary.com/practicaldev/image/fetch/s--wal8CYhb--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://cl.ly/bfceb0d065e7/Image%25202018-11-01%2520at%25201.50.58%2520PM.png">access modifier table</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-generic-types" class="outline-3">
+<h3 id="generic-types">Generic Types</h3>
+<div class="outline-text-3" id="text-generic-types">
+<p>
+We can create a basic class that we want to hold any type. Since we know that everything in Java is a subclass of the <kbd>Object</kbd> class, we can assume that the best, most generic course of action is to have the box store an object.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Box</span> <span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">Object</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">object</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setContents</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">Object</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">object</span><span style="color: #7aa2f7;">)</span> <span style="color: #7aa2f7;">{</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.object = object; <span style="color: #7aa2f7;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">Object</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">getContents</span><span style="color: #7aa2f7;">()</span> <span style="color: #7aa2f7;">{</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> object; <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+This code is very problematic!
+There is no way to verify at compile time how the class is going to be used. One section of the code may set an <kbd>Integer</kbd> into the box contents and expect to get <kbd>Integers</kbd> out of it, while another part of the code may pass in a <kbd>String</kbd>, which will throw a runtime error. It also gives no information to the programmer as to what the box may be used for.
+</p>
+
+<p>
+To solve this, we can create what is called a <b>generic</b> class. To instantiate a generic class, we type <sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
+</p>
+
+<p>
+With this change, the Box class becomes:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-doc); background-color: var(--bg-doc);">/**</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * Generic version of the Box class.</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * </span><span style="color: #ff9e64; background-color: var(--bg-doc);">@param</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);"> </span><span style="color: #ff9e64; background-color: var(--bg-doc);">&lt;T&gt;</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);"> the type of the value being boxed</span>
+<span style="color: var(--clr-doc); background-color: var(--bg-doc);"> */</span>
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Box</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">T</span><span style="color: #a9b1d6;">&gt;</span> <span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">T stands for "Type"</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">private</span> <span style="color: #c0caf5;">T</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">t</span>;
+
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">setContents</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">T</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">t</span><span style="color: #7aa2f7;">)</span> <span style="color: #7aa2f7;">{</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">this</span>.t = t; <span style="color: #7aa2f7;">}</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">T</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">getContents</span><span style="color: #7aa2f7;">()</span> <span style="color: #7aa2f7;">{</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">return</span> t; <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9995a84" class="outline-4">
+<h4 id="org9995a84">Instantiating Generics</h4>
+<div class="outline-text-4" id="text-org9995a84">
+<p>
+Whenever instantiating a generic class, the type has to be specified within angle brackets.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">In modern Java, you only have to specify the type once.</span>
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Leave the second pair of angle brackets empty in what is called "the diamond".</span>
+    <span style="color: #c0caf5;">Box</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">String</span><span style="color: #a9b1d6;">&gt;</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">stringBox</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Box</span><span style="color: #a9b1d6;">&lt;&gt;</span>;
+    <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">In older versions of Java, this line would be instantiated as follows:</span>
+    <span style="color: #c0caf5;">Box</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">Integer</span><span style="color: #a9b1d6;">&gt;</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">intBox</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Box</span><span style="color: #a9b1d6;">&lt;</span><span style="color: #c0caf5;">Integer</span><span style="color: #a9b1d6;">&gt;()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1a9938b" class="outline-4">
+<h4 id="org1a9938b">Multiple Generic Types</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-multithreading" class="outline-2">
+<h2 id="multithreading">Multithreading</h2>
+<div class="outline-text-2" id="text-multithreading">
+</div>
+<div id="outline-container-what-is-a-thread" class="outline-3">
+<h3 id="what-is-a-thread">What is a Thread?</h3>
+<div class="outline-text-3" id="text-what-is-a-thread">
+<p>
+A <b>thread</b> is the atomic unit of programming instructions that can be handled independently by a scheduler<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>, which is part of the computer&rsquo;s operating system.
+</p>
+</div>
+</div>
+
+<div id="outline-container-utilizing-the-thread-class" class="outline-3">
+<h3 id="utilizing-the-thread-class">Utilizing the Thread Class</h3>
+<div class="outline-text-3" id="text-utilizing-the-thread-class">
+<p>
+All modern operating systems support concurrency through processes and threads.
+Normally, programs do not take advantage of concurrency, and run on a single thread.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">MultiThreading</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extends</span> <span style="color: #c0caf5;">Thread</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">run</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Let's wrap this in a try-catch block in case something weird happens.</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">try</span> <span style="color: #ff9e64;">{</span>
+            <span style="color: var(--clr-comment-delimiter); background-color: var(--bg-comment-delimiter);">// </span><span style="color: var(--clr-comment); background-color: var(--bg-comment);">Display the thread that is running</span>
+            System.out.println<span style="color: #73daca;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Thread "</span>
+                + Thread.currentThread<span style="color: #a9b1d6;">()</span>.getId<span style="color: #a9b1d6;">()</span>
+                + <span style="color: var(--clr-string); background-color: var(--bg-string);">" is running"</span><span style="color: #73daca;">)</span>;
+        <span style="color: #ff9e64;">}</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">catch</span> <span style="color: #ff9e64;">(</span><span style="color: #c0caf5;">Exception</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">e</span><span style="color: #ff9e64;">)</span> <span style="color: #ff9e64;">{</span>
+            System.out.println<span style="color: #73daca;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Uh oh, something happened!"</span><span style="color: #73daca;">)</span>;
+        <span style="color: #ff9e64;">}</span>
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Main</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">cores</span> = Runtime.getRuntime<span style="color: #ff9e64;">()</span>.availableProcessors<span style="color: #ff9e64;">()</span>;
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #ff9e64;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">i</span> = <span style="color: #ff9e64; font-weight: bold;">0</span>; i &lt; <span style="color: #c0caf5;">cores</span>; i++<span style="color: #ff9e64;">)</span>
+        <span style="color: #ff9e64;">{</span>
+            <span style="color: #c0caf5;">Thread</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">thread</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Thread</span><span style="color: #73daca;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">MultiThreading</span><span style="color: #a9b1d6;">()</span><span style="color: #73daca;">)</span>;
+            thread.start<span style="color: #73daca;">()</span>;
+        <span style="color: #ff9e64;">}</span>
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+As mentioned in <a href="#inheritance">Inheritance</a>, Java does not support multiple inheritance. This can cause problems if a program is extending the <kbd>Thread</kbd> class. To get around this, you can instead implement the <kbd>Runnable</kbd> interface, which allows for thread creation and manipulation without extending a parent class.
+</p>
+
+<p>
+The process of writing the function is the same, except now we can implement multiple classes and extend a parent class, if we need.
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">MultiThreading</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">implements</span> <span style="color: #c0caf5;">Runnable</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">run</span><span style="color: #7aa2f7;">()</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">try</span> <span style="color: #ff9e64;">{</span>
+            System.out.println<span style="color: #73daca;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Thread "</span>
+                + Thread.currentThread<span style="color: #a9b1d6;">()</span>.getId<span style="color: #a9b1d6;">()</span>
+                + <span style="color: var(--clr-string); background-color: var(--bg-string);">" is running"</span><span style="color: #73daca;">)</span>;
+        <span style="color: #ff9e64;">}</span>
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">catch</span> <span style="color: #ff9e64;">(</span><span style="color: #c0caf5;">Exception</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">e</span><span style="color: #ff9e64;">)</span> <span style="color: #ff9e64;">{</span>
+            System.out.println<span style="color: #73daca;">(</span><span style="color: var(--clr-string); background-color: var(--bg-string);">"Uh oh, something happened!"</span><span style="color: #73daca;">)</span>;
+        <span style="color: #ff9e64;">}</span>
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+
+<span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Main</span>
+<span style="color: #a9b1d6;">{</span>
+    <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">static</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">main</span><span style="color: #7aa2f7;">(</span><span style="color: #c0caf5;">String</span> <span style="color: #ff9e64;">[]</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">args</span><span style="color: #7aa2f7;">)</span>
+    <span style="color: #7aa2f7;">{</span>
+        <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">cores</span> = Runtime.getRuntime<span style="color: #ff9e64;">()</span>.availableProcessors<span style="color: #ff9e64;">()</span>;
+        <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">for</span> <span style="color: #ff9e64;">(</span><span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">i</span> = <span style="color: #ff9e64; font-weight: bold;">0</span>; i &lt; <span style="color: #c0caf5;">cores</span>; i++<span style="color: #ff9e64;">)</span>
+        <span style="color: #ff9e64;">{</span>
+            <span style="color: #c0caf5;">Thread</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">thread</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Thread</span><span style="color: #73daca;">(</span><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">MultiThreading</span><span style="color: #a9b1d6;">()</span><span style="color: #73daca;">)</span>;
+            thread.start<span style="color: #73daca;">()</span>;
+        <span style="color: #ff9e64;">}</span>
+    <span style="color: #7aa2f7;">}</span>
+<span style="color: #a9b1d6;">}</span>
+</pre>
+</div>
+
+<p>
+NOTE: Both of these examples taken from GeeksforGeeks use or override a deprecated API. For the purposes of this example tutorial, it is fine enough to see how multithreading works.
+However, if there is a necessity for concurrent applications, it is best to look at the Java docs and more up-to-date examples for safe appropriate threading implementations.
+There are many more advanced techniques for implementing threads, such as this one by <a href="https://www.tutorialspoint.com/java/java_multithreading.htm">TutorialsPoint</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-mutex-locks" class="outline-3">
+<h3 id="mutex-locks">Mutex Locks</h3>
+<div class="outline-text-3" id="text-mutex-locks">
+</div>
+</div>
+</div>
+<div id="outline-container-sources" class="outline-2">
+<h2 id="sources">Sources</h2>
+<div class="outline-text-2" id="text-sources">
+<p>
+Class Notes from Object Oriented Programming, COP 3330
+<a href="https://docs.oracle.com/javase/tutorial/java/index.html">The Java Tutorials</a>
+<a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">Swarthmore&rsquo;s Make Guide</a>
+<a href="https://winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/">Synchronized Locks</a>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+This has pros and cons that will be discussed later in-depth.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Java has the ability to declare methods as <kbd>synchronized</kbd> in their signatures, as well as the <kbd>try-with</kbd> and <kbd>finally</kbd> keywords but they do not promote neatness and are not as robust in complex cases.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In Python, the value of an integer is not restricted by the number of bits, and an integer can expand to the limit of the available memory of the system. Python does this behind the scenes, so there is no special arangement required to store large numbers.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Notice that all of the types within the class have been changed to the generic type <kbd>T</kbd>. This <kbd>T</kbd> can be any name, but the syntactical standard is to use T, or any uppercase single letter.
+According to the <a href="https://docs.oracle.com/javase/tutorial/java/generics/types.html">Oracle docs</a>, the most commonly used type parameter names are:
+</p>
+
+<ul class="org-ul">
+<li>E - Element</li>
+<li>K - Key</li>
+<li>N - Number</li>
+<li>T - Type</li>
+<li>V - Value</li>
+</ul></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The scheduler is an operating system module that selects the next jobs to be admitted into the system and the next process to run. Operating systems may feature up to three distinct scheduler types: a long-term scheduler (also known as an admission scheduler or high-level scheduler), a <i>mid-term</i> or <i>medium-term scheduler</i>, and a <i>short-term scheduler</i> (<a href="https://en.wikipedia.org/wiki/Scheduling_(computing)">wikipedia</a>).
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+let cookie = document.cookie.split('; ').find(r => r.startsWith('org_html_themify_theme'))
+let theme = 'light'
+
+if (cookie) {
+  theme = cookie.split('=')[1]
+}
+
+let toggleThemeBtn = document.getElementById('toggle-theme')
+let toggleTocBtn = document.getElementById('toggle-toc')
+
+if (theme == 'light') {
+  useLightTheme();
+} else {
+  useDarkTheme();
+}
+
+function transition() {
+  document.body.classList.add('theme-transition')
+  setTimeout(() => document.body.classList.remove('theme-transition'), 500)
+}
+
+function useLightTheme(theme) {
+  document.body.dataset.theme = 'light'
+  toggleThemeBtn.innerHTML = 'dark theme'
+  document.cookie = 'org_html_themify_theme=light'
+}
+
+function useDarkTheme(theme) {
+  document.body.dataset.theme = 'dark'
+  toggleThemeBtn.innerHTML = 'light theme'
+  document.cookie = 'org_html_themify_theme=dark'
+}
+
+toggleThemeBtn.addEventListener('click', function() {
+  transition()
+  if (document.body.dataset.theme == 'light') {
+    useDarkTheme();
+  } else {
+    useLightTheme();
+  }
+})
+
+
+let toc = document.getElementById('table-of-contents')
+
+toggleTocBtn.addEventListener('click', function() {
+  toc.classList.add('toc-show')
+  toc.addEventListener('click', function() {
+    toc.classList.remove('toc-show')
+  })
+})
+/*]]>*/-->
+</script>
+</div>
+</body>
+</html>
