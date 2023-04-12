@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-12 Wed 16:11 -->
+<!-- 2023-04-12 Wed 16:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intro to Java</title>
@@ -424,6 +424,421 @@ img {
 }
 /*]]>*/-->
 </style>
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.35;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family:
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+}
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+	font-family:
+		ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+:root {
+  --bc-tb: #e7e7e7;
+  --bc-block: #84888b;
+  --clr: #383a42;
+  --clr-tb-hd: #383a42;
+  --clr-code: #383a42;
+  --bg: #fafafa;
+  --bg-code: #e7e7e7;
+  --bg-tb-hd: #e7e7e7;
+  --bg-block: #e7e7e7;
+  --clr-link: #b751b6;
+  --clr-title: #383a42;
+  --clr-todo: #50a14f;
+  --bg-todo: initial;
+  --clr-done: #9ca0a4;
+  --bg-done: initial;
+  --ts-clr: #e45649;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #e45649;
+  --bg-constant: initial;
+  --clr-constant: #b751b6;
+  --bg-comment: initial;
+  --clr-comment: #9ca0a4;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #a626a4;
+  --bg-variable: initial;
+  --clr-variable: #6a1868;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #4078f2;
+  --bg-doc: initial;
+  --clr-doc: #84888b;
+  --bg-builtin: initial;
+  --clr-builtin: #a626a4;
+  --bg-string: initial;
+  --clr-string: #50a14f;
+}
+
+html {
+  font-family: Sans;
+}
+
+body {
+  background: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body[data-theme='light'] {
+  background: var(--bg);
+  color: var(--clr);
+}
+
+body[data-theme='dark'] {
+  background: var(--bg);
+  color: var(--clr);
+  --bc-tb: #1d2026;
+  --bc-block: #83898d;
+  --clr: #bbc2cf;
+  --clr-code: #bbc2cf;
+  --clr-tb-hd: #bbc2cf;
+  --bg: #282c34;
+  --bg-tb-hd: #1d2026;
+  --bg-code: #1d2026;
+  --bg-block: #23272e;
+  --clr-link: #a9a1e1;
+  --clr-title: #bbc2cf;
+  --clr-todo: #98be65;
+  --bg-todo: initial;
+  --clr-done: #5B6268;
+  --bg-done: initial;
+  --ts-clr: #51afef;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #51afef;
+  --bg-constant: initial;
+  --clr-constant: #a9a1e1;
+  --bg-comment: initial;
+  --clr-comment: #5B6268;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #c678dd;
+  --bg-variable: initial;
+  --clr-variable: #dcaeea;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #51afef;
+  --bg-doc: initial;
+  --clr-doc: #83898d;
+  --bg-builtin: initial;
+  --clr-builtin: #c678dd;
+  --bg-string: initial;
+  --clr-string: #98be65;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #content {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #content {
+    width: 768px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    align-items: flex-end;
+  }
+  #content {
+    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
+    margin-right: var(--mg);
+  }
+}
+
+h1 {
+  color: var(--clr-title);
+  text-align: center;
+}
+h2, h3, h4, h5, h6, h7 {
+  font-family: Sans Serif;
+}
+h2 {
+  line-height: 2.5em;
+}
+h2::before {
+  content: "◉ ";
+}
+h3::before {
+  content: "✸ ";
+}
+h4::before {
+  content: "▷ ";
+}
+
+code {
+  color: var(--clr-code);
+  background: var(--bg-code);
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+pre {
+  padding: 20px;
+  border: 1px solid var(--bc-block);
+  background: var(--bg-block);
+  font-size: 0.9rem;
+  overflow-x: scroll;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.todo {
+  color: var(--clr-todo);
+  background: var(--bg-todo);
+}
+
+.done {
+  color: var(--clr-done);
+  background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+  font-size: 0.8rem;
+  color: var(--clr-ts);
+}
+
+table {
+  width: 100%;
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  color: var(--clr-tb-hd);
+  background: var(--bg-tb-hd);
+}
+
+td, th {
+  border: thin solid var(--bc-tb);
+}
+
+li {
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#table-of-contents > h2 {
+  display: none;
+}
+
+#table-of-contents {
+  border: thin solid var(--bc-block);
+  background: var(--bg-block);
+}
+
+#toggle-toc {
+  display: none;
+}
+
+.toc-show {
+  display: block!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2em;
+    line-height: 2em;
+    display: block;
+  }
+  #table-of-contents {
+    background: var(--bg);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+  #table-of-contents a {
+    color: var(--clr);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #table-of-contents {
+    font-size: 0.8rem;
+    position: fixed;
+    left: var(--mg);
+    top: var(--mg);
+    bottom: var(--mg);
+    width: var(--w-toc);
+    overflow-y: scroll;
+  }
+}
+
+#table-of-contents::-webkit-scrollbar {
+  display: none;
+}
+
+#table-of-contents {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.MathJax_Display {
+  font-size: 1.25em;
+}
+
+#toggle-theme {
+  border-width: 0;
+  line-height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background: var(--bg-block);
+  color: var(--clr-code);
+}
+
+#toggle-theme:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-theme {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #toggle-theme {
+    position: absolute;
+    top: var(--mg);
+    right: var(--mg);
+    border-radius: 5px;
+  }
+}
+
+.theme-transition {
+  transition: all 0.5s;
+}
+
+.status {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  ul {
+    padding-left: .5em;
+    margin-left: 0;
+  }
+  li {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+/*]]>*/-->
+</style>
 <script>
   window.MathJax = {
     tex: {
@@ -470,7 +885,7 @@ img {
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb9f8c8f">Table of Contents&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></a></li>
+<li><a href="#org91d5159">Table of Contents&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></a></li>
 <li><a href="#what-is-java">What is Java?</a></li>
 <li><a href="#why-java">Why Java?</a></li>
 <li><a href="#anatomy-of-a-basic-program">Anatomy of a Basic Program</a>
@@ -479,13 +894,13 @@ img {
 <li><a href="#the-main-method">The <code>main()</code> Method</a></li>
 <li><a href="#system-output">System Output</a>
 <ul>
-<li><a href="#org2006c74">String Concatenation</a></li>
+<li><a href="#org73207ab">String Concatenation</a></li>
 </ul>
 </li>
 <li><a href="#compiling-programs">Compiling Programs</a>
 <ul>
-<li><a href="#org4a2da84">Compiling Multiple Source files into One Program</a></li>
-<li><a href="#org98194f8">Jar Files and Compiled Projects</a></li>
+<li><a href="#orgb3ba3c6">Compiling Multiple Source files into One Program</a></li>
+<li><a href="#org514619f">Jar Files and Compiled Projects</a></li>
 </ul>
 </li>
 </ul>
@@ -494,8 +909,8 @@ img {
 <ul>
 <li><a href="#integers">Integers</a>
 <ul>
-<li><a href="#orga2fe604"><code>int</code></a></li>
-<li><a href="#org911fb79">The <kbd>Integer</kbd> Class</a></li>
+<li><a href="#org9b26b32"><code>int</code></a></li>
+<li><a href="#org63d2237">The <kbd>Integer</kbd> Class</a></li>
 </ul>
 </li>
 <li><a href="#strings">Strings</a></li>
@@ -506,7 +921,7 @@ img {
 <ul>
 <li><a href="#arrays">Arrays</a>
 <ul>
-<li><a href="#orga54b68c">Command-Line Arguments</a></li>
+<li><a href="#org25b323d">Command-Line Arguments</a></li>
 </ul>
 </li>
 <li><a href="#arraylists">ArrayLists</a></li>
@@ -519,7 +934,7 @@ img {
 <li><a href="#checked-vs-unchecked-exceptions">Checked vs Unchecked Exceptions</a></li>
 <li><a href="#user-defined-exceptions">User-Defined Exceptions</a>
 <ul>
-<li><a href="#org9d3b358"><span class="todo TODO">TODO</span> The <kbd>printStackTrace()</kbd> Method</a></li>
+<li><a href="#org22b095d"><span class="todo TODO">TODO</span> The <kbd>printStackTrace()</kbd> Method</a></li>
 </ul>
 </li>
 </ul>
@@ -531,7 +946,7 @@ img {
 <li><a href="#avoiding-magic-numbers">Avoiding &ldquo;Magic Numbers&rdquo;</a></li>
 <li><a href="#style-guide">Style Guide</a>
 <ul>
-<li><a href="#org3297d63">Curly Braces</a></li>
+<li><a href="#org72c040f">Curly Braces</a></li>
 </ul>
 </li>
 </ul>
@@ -541,33 +956,33 @@ img {
 <li><a href="#what-is-an-object">What is an Object?</a></li>
 <li><a href="#abstraction">Abstraction</a>
 <ul>
-<li><a href="#orgdae4a44">Abstract Classes</a></li>
-<li><a href="#org7e3cb8d">Interfaces</a></li>
+<li><a href="#orgd1c29e6">Abstract Classes</a></li>
+<li><a href="#orgb0eb3f5">Interfaces</a></li>
 </ul>
 </li>
 <li><a href="#inheritance">Inheritance</a>
 <ul>
-<li><a href="#orgfa489b4">Classes and Subclasses</a></li>
-<li><a href="#org99dea4d"><span class="todo TODO">TODO</span> Method Overloading</a></li>
-<li><a href="#org62a6089"><span class="todo TODO">TODO</span> Method Overriding</a></li>
+<li><a href="#org1708a1d">Classes and Subclasses</a></li>
+<li><a href="#orgee77d50"><span class="todo TODO">TODO</span> Method Overloading</a></li>
+<li><a href="#orgbe38a81"><span class="todo TODO">TODO</span> Method Overriding</a></li>
 </ul>
 </li>
 <li><a href="#encapsulation">Encapsulation</a>
 <ul>
-<li><a href="#orge78756e">Class Variance and Invariance</a></li>
+<li><a href="#org713d185">Class Variance and Invariance</a></li>
 </ul>
 </li>
 <li><a href="#polymorphism">Polymorphism</a>
 <ul>
-<li><a href="#org9514915">Types of Polymorphism</a></li>
-<li><a href="#orgc6c5fdd">Polymorphism with Inheritance</a></li>
+<li><a href="#org5f28ab8">Types of Polymorphism</a></li>
+<li><a href="#org6c4dcda">Polymorphism with Inheritance</a></li>
 </ul>
 </li>
 <li><a href="#access-modifiers">Access Modifiers</a></li>
 <li><a href="#generic-types">Generic Types</a>
 <ul>
-<li><a href="#org89b3ba5">Instantiating Generics</a></li>
-<li><a href="#org8c8eac0">Multiple Generic Types</a></li>
+<li><a href="#org49d607a">Instantiating Generics</a></li>
+<li><a href="#org0ec9733">Multiple Generic Types</a></li>
 </ul>
 </li>
 </ul>
@@ -584,9 +999,9 @@ img {
 </div>
 </div>
 
-<div id="outline-container-orgb9f8c8f" class="outline-2">
-<h2 id="orgb9f8c8f">Table of Contents&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></h2>
-<div class="outline-text-2" id="text-orgb9f8c8f">
+<div id="outline-container-org91d5159" class="outline-2">
+<h2 id="org91d5159">Table of Contents&#xa0;&#xa0;&#xa0;<span class="tag"><span class="toc">toc</span></span></h2>
+<div class="outline-text-2" id="text-org91d5159">
 <ul class="org-ul">
 <li><a href="#what-is-java">What is Java?</a></li>
 <li><a href="#why-java">Why Java?</a></li>
@@ -763,9 +1178,9 @@ There are three methods generally used to produce system output.
 <code>System.out.printf()</code> is only used if the advanced formatting of printf is needed. otherwise, <code>System.out.print()</code> or <code>println()</code> are used.
 </p>
 </div>
-<div id="outline-container-org2006c74" class="outline-4">
-<h4 id="org2006c74">String Concatenation</h4>
-<div class="outline-text-4" id="text-org2006c74">
+<div id="outline-container-org73207ab" class="outline-4">
+<h4 id="org73207ab">String Concatenation</h4>
+<div class="outline-text-4" id="text-org73207ab">
 <p>
 Concatenating strings for printing in Java is as easy as in Python.
 </p>
@@ -797,9 +1212,9 @@ NOTE: When <b>compiling</b> the source code with <kbd>javac</kbd>, you need to i
 </p>
 </div>
 
-<div id="outline-container-org4a2da84" class="outline-4">
-<h4 id="org4a2da84">Compiling Multiple Source files into One Program</h4>
-<div class="outline-text-4" id="text-org4a2da84">
+<div id="outline-container-orgb3ba3c6" class="outline-4">
+<h4 id="orgb3ba3c6">Compiling Multiple Source files into One Program</h4>
+<div class="outline-text-4" id="text-orgb3ba3c6">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">HelloWorld</span>
 <span style="color: #a9b1d6;">{</span>
@@ -846,8 +1261,8 @@ What does the previous class have to say:
 </pre>
 </div>
 <ul class="org-ul">
-<li><a id="org483869b"></a>Notes on Compilation<br />
-<div class="outline-text-5" id="text-org483869b">
+<li><a id="orge97029d"></a>Notes on Compilation<br />
+<div class="outline-text-5" id="text-orge97029d">
 <p>
 When we try and compile <kbd>SetUp.java</kbd>, the compiler sees that <kbd>HelloWorld.smile()</kbd> line.
 </p>
@@ -863,20 +1278,20 @@ So it opens that file and compiles it along with <kbd>SetUp.java</kbd>. That&rsq
 </li>
 </ul>
 </div>
-<div id="outline-container-org98194f8" class="outline-4">
-<h4 id="org98194f8">Jar Files and Compiled Projects</h4>
-<div class="outline-text-4" id="text-org98194f8">
+<div id="outline-container-org514619f" class="outline-4">
+<h4 id="org514619f">Jar Files and Compiled Projects</h4>
+<div class="outline-text-4" id="text-org514619f">
 </div>
 <ul class="org-ul">
-<li><a id="org9983446"></a>Jar Files<br />
-<div class="outline-text-5" id="text-org9983446">
+<li><a id="org6d10ae5"></a>Jar Files<br />
+<div class="outline-text-5" id="text-org6d10ae5">
 <p>
 A JAR file is a Java ARchive file that is similar to a <kbd>.zip</kbd> extension. They may or may not be executable; on Windows systems double clicking a <kbd>.jar</kbd> file will automatically unpack and run whatever is in the archive with the invocation <code class="src src-bash">java -jar foo.jar</code>.
 </p>
 </div>
 </li>
-<li><a id="orgd47916f"></a>Make<br />
-<div class="outline-text-5" id="text-orgd47916f">
+<li><a id="org7afd5a8"></a>Make<br />
+<div class="outline-text-5" id="text-org7afd5a8">
 <p>
 <b>Make</b> is a program that automates compilation of source code files into executables. Rather than having to compile tens to hundreds of individual files manually, writing a Makefile allows for the compilation step to be completed without human interaction.
 </p>
@@ -906,9 +1321,9 @@ They are all very well documented on the javadocs, so we will explore just one. 
 <h3 id="integers">Integers</h3>
 <div class="outline-text-3" id="text-integers">
 </div>
-<div id="outline-container-orga2fe604" class="outline-4">
-<h4 id="orga2fe604"><code>int</code></h4>
-<div class="outline-text-4" id="text-orga2fe604">
+<div id="outline-container-org9b26b32" class="outline-4">
+<h4 id="org9b26b32"><code>int</code></h4>
+<div class="outline-text-4" id="text-org9b26b32">
 <p>
 In most<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> programming languages, an int is defined as 32 bits by default.
 <b>But</b>, that can vary from system to system. There is no guarantee that an <code>int</code> will be 32 bits on all systems. This is historically a problem with languages like C.
@@ -923,9 +1338,9 @@ Java solves this by compiling code first to byte-code in a <kbd>.class</kbd> fil
 </p>
 </div>
 </div>
-<div id="outline-container-org911fb79" class="outline-4">
-<h4 id="org911fb79">The <kbd>Integer</kbd> Class</h4>
-<div class="outline-text-4" id="text-org911fb79">
+<div id="outline-container-org63d2237" class="outline-4">
+<h4 id="org63d2237">The <kbd>Integer</kbd> Class</h4>
+<div class="outline-text-4" id="text-org63d2237">
 <p>
 In contrast with the primitive <code>int</code> type, Integer is a built-in class that has a number of useful methods such as the maximum and minimum values for an integer.
 </p>
@@ -1003,9 +1418,9 @@ An array in Java is initialized in a specific way:
 </div>
 </div>
 
-<div id="outline-container-orga54b68c" class="outline-4">
-<h4 id="orga54b68c">Command-Line Arguments</h4>
-<div class="outline-text-4" id="text-orga54b68c">
+<div id="outline-container-org25b323d" class="outline-4">
+<h4 id="org25b323d">Command-Line Arguments</h4>
+<div class="outline-text-4" id="text-org25b323d">
 <p>
 A cool part of the <code>main()</code> function in Java is that, by default, you can pass command-line arguments and read them quite simply.
 </p>
@@ -1135,8 +1550,8 @@ Sometimes there are instances in which something will break in a way that is ver
 </p>
 </div>
 
-<div id="outline-container-org9d3b358" class="outline-4">
-<h4 id="org9d3b358"><span class="todo TODO">TODO</span> The <kbd>printStackTrace()</kbd> Method</h4>
+<div id="outline-container-org22b095d" class="outline-4">
+<h4 id="org22b095d"><span class="todo TODO">TODO</span> The <kbd>printStackTrace()</kbd> Method</h4>
 </div>
 </div>
 </div>
@@ -1152,7 +1567,7 @@ The Javadoc <a href="https://www.oracle.com/technical-resources/articles/java/ja
 Java documentation, as taken from the website above, has the general format:
 </p>
 <div class="org-src-container">
-<pre class="src src-java" id="org25f6356"><span style="color: var(--clr-doc); background-color: var(--bg-doc);">/**</span>
+<pre class="src src-java" id="org6ea03ed"><span style="color: var(--clr-doc); background-color: var(--bg-doc);">/**</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * Returns an Image object that can then be painted on the screen.</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * The url argument must specify an absolute </span><span style="color: #ff9e64; background-color: var(--bg-doc);">&lt;a href="#</span><span style="color: #ff9e64; background-color: var(--bg-doc);">{@link}</span><span style="color: #ff9e64; background-color: var(--bg-doc);">"&gt;{@link URL}&lt;/a&gt;</span><span style="color: var(--clr-doc); background-color: var(--bg-doc);">. The name</span>
 <span style="color: var(--clr-doc); background-color: var(--bg-doc);"> * argument is a specifier that is relative to the url argument.</span>
@@ -1281,9 +1696,9 @@ According to the Java specification from Oracle, these are some spacing rules:
 </ul>
 </div>
 
-<div id="outline-container-org3297d63" class="outline-4">
-<h4 id="org3297d63">Curly Braces</h4>
-<div class="outline-text-4" id="text-org3297d63">
+<div id="outline-container-org72c040f" class="outline-4">
+<h4 id="org72c040f">Curly Braces</h4>
+<div class="outline-text-4" id="text-org72c040f">
 <p>
 There are a few options for writing curly braces for methods and classes. The most common and preferred method is the One True Brace Style or <b>OBTS</b>.
 This is also sometimes referred to as &ldquo;Egyptian Braces&rdquo; style.
@@ -1380,9 +1795,9 @@ A car requires the participation of many independent objects working in tandem w
 In Java, abstraction is accomplished through the implementation of <kbd>interfaces</kbd> and <kbd>abstract</kbd> classes.
 </p>
 </div>
-<div id="outline-container-orgdae4a44" class="outline-4">
-<h4 id="orgdae4a44">Abstract Classes</h4>
-<div class="outline-text-4" id="text-orgdae4a44">
+<div id="outline-container-orgd1c29e6" class="outline-4">
+<h4 id="orgd1c29e6">Abstract Classes</h4>
+<div class="outline-text-4" id="text-orgd1c29e6">
 <p>
 An abstract class is a restricted class that is used as a template only, and cannot create objects by itself. It may or may not include abstract methods within the class.
 </p>
@@ -1410,9 +1825,9 @@ If you were to try and create a <kbd>Creature</kbd> object, Java would produce a
 </div>
 </div>
 
-<div id="outline-container-org7e3cb8d" class="outline-4">
-<h4 id="org7e3cb8d">Interfaces</h4>
-<div class="outline-text-4" id="text-org7e3cb8d">
+<div id="outline-container-orgb0eb3f5" class="outline-4">
+<h4 id="orgb0eb3f5">Interfaces</h4>
+<div class="outline-text-4" id="text-orgb0eb3f5">
 <p>
 An <kbd>interface</kbd> is a completely &ldquo;abstract&rdquo; class also used to group related methods, but with empty bodies, unlike abstract classes.
 </p>
@@ -1425,7 +1840,7 @@ An <kbd>interface</kbd>, unlike an <kbd>abstract</kbd> class, is like a template
 Here is an example, where there are multiple interfaces, and a class that extends them both.
 </p>
 <div class="org-src-container">
-<pre class="src src-java" id="org28fede8"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interface</span> <span style="color: #c0caf5;">Creature</span>
+<pre class="src src-java" id="orgf58dddf"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">interface</span> <span style="color: #c0caf5;">Creature</span>
 <span style="color: #a9b1d6;">{</span>
     <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">void</span> <span style="color: var(--function-clr-name); background-color: var(--function-bg-name);">sleep</span><span style="color: #7aa2f7;">()</span>;
 <span style="color: #a9b1d6;">}</span>
@@ -1483,15 +1898,15 @@ Inheritance in Java and other OOP languages is the idea that an object can <b>in
 When &gt;= 2 methods in the same class have the same method name but different parameters, this is called <b>overloading</b>. When two methods have the same method name <b>and</b> parameters, this is called method <b>overriding</b>.
 </p>
 </div>
-<div id="outline-container-orgfa489b4" class="outline-4">
-<h4 id="orgfa489b4">Classes and Subclasses</h4>
-<div class="outline-text-4" id="text-orgfa489b4">
+<div id="outline-container-org1708a1d" class="outline-4">
+<h4 id="org1708a1d">Classes and Subclasses</h4>
+<div class="outline-text-4" id="text-org1708a1d">
 <p>
 Let&rsquo;s take a look at a class for a Person object, which has multiple <b>fields</b> and a <b>constructor</b> method.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java" id="org9764632"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Person</span>
+<pre class="src src-java" id="org202a94b"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Person</span>
 <span style="color: #a9b1d6;">{</span>
     <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">String</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">name</span>;
     <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">age</span>;
@@ -1515,7 +1930,7 @@ Now, let&rsquo;s create a child class, that <kbd>extends</kbd> the parent class.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java" id="org0a0b31e"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Student</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extends</span> <span style="color: #c0caf5;">Person</span>
+<pre class="src src-java" id="orge93453d"><span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">class</span> <span style="color: #c0caf5;">Student</span> <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">extends</span> <span style="color: #c0caf5;">Person</span>
 <span style="color: #a9b1d6;">{</span>
     <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">public</span> <span style="color: #c0caf5;">int</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">studentID</span>;
 
@@ -1563,11 +1978,11 @@ The child class inherits all fields and methods from the parent class except for
 </p>
 </div>
 </div>
-<div id="outline-container-org99dea4d" class="outline-4">
-<h4 id="org99dea4d"><span class="todo TODO">TODO</span> Method Overloading</h4>
+<div id="outline-container-orgee77d50" class="outline-4">
+<h4 id="orgee77d50"><span class="todo TODO">TODO</span> Method Overloading</h4>
 </div>
-<div id="outline-container-org62a6089" class="outline-4">
-<h4 id="org62a6089"><span class="todo TODO">TODO</span> Method Overriding</h4>
+<div id="outline-container-orgbe38a81" class="outline-4">
+<h4 id="orgbe38a81"><span class="todo TODO">TODO</span> Method Overriding</h4>
 </div>
 </div>
 <div id="outline-container-encapsulation" class="outline-3">
@@ -1636,8 +2051,8 @@ Alex aged 22
 NOTE: Stylistically, a setter method and a getter method should both start with <kbd>set</kbd> and <kbd>get</kbd>, respectively.
 </p>
 </div>
-<div id="outline-container-orge78756e" class="outline-4">
-<h4 id="orge78756e">Class Variance and Invariance</h4>
+<div id="outline-container-org713d185" class="outline-4">
+<h4 id="org713d185">Class Variance and Invariance</h4>
 </div>
 </div>
 <div id="outline-container-polymorphism" class="outline-3">
@@ -1648,9 +2063,9 @@ In Java, polymorphism provides different implementations of a method depending o
 </p>
 </div>
 
-<div id="outline-container-org9514915" class="outline-4">
-<h4 id="org9514915">Types of Polymorphism</h4>
-<div class="outline-text-4" id="text-org9514915">
+<div id="outline-container-org5f28ab8" class="outline-4">
+<h4 id="org5f28ab8">Types of Polymorphism</h4>
+<div class="outline-text-4" id="text-org5f28ab8">
 <p>
 You can perform Polymorphism in Java via two different methods:
 </p>
@@ -1705,9 +2120,9 @@ Here there are two different constructors, one for a circle and one for a rectan
 </div>
 </div>
 
-<div id="outline-container-orgc6c5fdd" class="outline-4">
-<h4 id="orgc6c5fdd">Polymorphism with Inheritance</h4>
-<div class="outline-text-4" id="text-orgc6c5fdd">
+<div id="outline-container-org6c4dcda" class="outline-4">
+<h4 id="org6c4dcda">Polymorphism with Inheritance</h4>
+<div class="outline-text-4" id="text-org6c4dcda">
 <p>
 A superclass named <kbd>Shapes</kbd> has a method called <kbd>area()</kbd>. Subclasses of <kbd>Shapes</kbd> can be <kbd>Triangle</kbd>, <kbd>Circle</kbd>, <kbd>Rectangle</kbd>. Each subclass has its way of calculating area.
 </p>
@@ -1740,7 +2155,7 @@ A superclass named <kbd>Shapes</kbd> has a method called <kbd>area()</kbd>. Subc
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java" id="orge37f8fa">    <span style="color: #c0caf5;">Shapes</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">shape</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Shapes</span><span style="color: #a9b1d6;">()</span>;
+<pre class="src src-java" id="orga57facd">    <span style="color: #c0caf5;">Shapes</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">shape</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Shapes</span><span style="color: #a9b1d6;">()</span>;
     <span style="color: #c0caf5;">Circle</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">circle</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Circle</span><span style="color: #a9b1d6;">()</span>;
     <span style="color: #c0caf5;">Triangle</span> <span style="color: var(--clr-variable); background-color: var(--bg-variable);">triangle</span> = <span style="color: var(--clr-keyword); background-color: var(--bg-keyword);">new</span> <span style="color: #c0caf5;">Triangle</span><span style="color: #a9b1d6;">()</span>;
 
@@ -1819,9 +2234,9 @@ With this change, the Box class becomes:
 </div>
 </div>
 
-<div id="outline-container-org89b3ba5" class="outline-4">
-<h4 id="org89b3ba5">Instantiating Generics</h4>
-<div class="outline-text-4" id="text-org89b3ba5">
+<div id="outline-container-org49d607a" class="outline-4">
+<h4 id="org49d607a">Instantiating Generics</h4>
+<div class="outline-text-4" id="text-org49d607a">
 <p>
 Whenever instantiating a generic class, the type has to be specified within angle brackets.
 </p>
@@ -1836,8 +2251,8 @@ Whenever instantiating a generic class, the type has to be specified within angl
 </div>
 </div>
 </div>
-<div id="outline-container-org8c8eac0" class="outline-4">
-<h4 id="org8c8eac0">Multiple Generic Types</h4>
+<div id="outline-container-org0ec9733" class="outline-4">
+<h4 id="org0ec9733">Multiple Generic Types</h4>
 </div>
 </div>
 </div>
