@@ -1,1 +1,2 @@
-* doc-ock.github.io
+#+title: minifold.github.io
+#+subtitle: a very, very small manifold.
