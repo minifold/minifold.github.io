@@ -19,7 +19,7 @@ jobs:
       - name: Set up Emacs
         uses: purcell/setup-emacs@master
         with:
-          version: 28.1
+          version: 27.2
 
       - uses: actions/checkout@v3
         with:
