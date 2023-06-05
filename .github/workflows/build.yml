@@ -1,4 +1,4 @@
-name: Build
+name: hugo-build
 
 on:
   push:
