@@ -1,0 +1,24 @@
+baseURL = "https://minifold.github.io"
+languageCode = "en"
+title = "Monochrome"
+author = "quantum"
+theme = "monochrome"
+baseURL = "https://kaiiiz.github.io/hugo-theme-monochrome"
+defaultContentLanguage = "en"
+enableEmoji = true
+paginate = 5
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params]
+enable_math = true
+enable_site_search = true
+enable_collapsible_toc = true
+footer = "quantum © 2023"
+
