@@ -1,0 +1,31 @@
+#+title: Test
+#+subtitle: Testing for Deployment on gh-pages
+
+#+HUGO_CUSTOM_FRONT_MATTER: :author "quantum"
+#+HUGO_BASE_DIR: ../
+#+HUGO_PAIRED_SHORTCODES: admonition
+#+PROPERTY: header-args :noeval
+#+MACRO: ref @@hugo:[@@$1@@hugo:]({{< ref "$2" >}})@@
+#+MACRO: relref @@hugo:[@@$1@@hugo:]({{< relref "$2" >}})@@
+
+* TODO: Make this thing work
+:properties:
+:EXPORT_HUGO_SECTION: test
+:EXPORT_FILE_NAME: index
+:EXPORT_DATE: <2023-06-04>
+:END:
+
+Hello, world!
+
+** Another heading
+Words on a page
+
+#+name: table
+|  a   | table  |
+| that |  has   |
+| some | values |
+
+#+begin_src python
+def foo(bar):
+	return bar
+#+end_src
